@@ -99,6 +99,7 @@ public class VisualiseurCarteTerrain extends JFrame {
 						TypeTerrain type = vte.getTypeTerrain(x, y);
 						terrainLabel.setText("Terrain: " + type.toString());
 					}
+
 				}
 
 		    }

@@ -16,7 +16,7 @@ import javax.imageio.ImageIO;
 public class Utils {
 
     /** Le répertoire de stockage des tuiles */
-    public static final String REPERTOIRE_TUILES = "/Users/abdous/Desktop/inge1/java/miniProjet/3il-rodez-java-22-miniprojet-1/data/tiles/";
+    public static final String REPERTOIRE_TUILES = "3il-rodez-java-22-miniprojet-1/data/tiles/";
 
     /**
      * Charge une image à partir d'un fichier spécifié.
@@ -26,25 +26,13 @@ public class Utils {
     public static BufferedImage chargerTuile(String nomFichier) {
         try {
             String imagePath = REPERTOIRE_TUILES + nomFichier;
-
-            System.out.printf(" path : " + imagePath);
-            System.out.println(System.getProperty("user.dir"));
-            File imagePa = new File(imagePath) ;
-            if (!imagePa.exists()) {
-                System.out.println(" File does not exist: " + imagePa);
-                return null; // or handle the situation accordingly
-            }
             BufferedImage image = ImageIO.read(new File(imagePath));
-
-            System.out.printf(" image: " + image + " path :" + imagePath);
-
-            System.out.println(image);
             return image;
         } catch (Exception e) {
             e.printStackTrace();
             System.exit(1);
         }
-        // This code will never be executed in practice.
+
         return null;
     }
 
@@ -56,20 +44,19 @@ public class Utils {
      * @param seed La graine utilisée pour le mélange.
      * @return Un nouveau tableau contenant les éléments mélangés.
      *
-     * @author philibert roquart, fainéant
+     * @author Abdou SYLLA
      */
     public static int[] melanger(int[] tab, long seed) {
-        Random rand = new Random(seed);// Création d'une instance de la classe (Random) avec (seed)
+        Random rand = new Random(seed);
 
         for (int i = tab.length - 1; i > 0; i--) {
             int index = rand.nextInt(i + 1);
 
-            // Permet de mélanger les éléments du tableau de manière aléatoire en échange (i) et l'index aléatoire
-            int temp = tab[index]; // Stockage temporaire de la valeur de l'élément à l'index aléatoire
-            tab[index] = tab[i];// Assigne la valeur (i) à l'élément à l'index aléatoire
-            tab[i] = temp;// Assig la valeur temporaire (ancienne valeur de l'élément à l'index aléatoire) à l'élément (i)
+            int temp = tab[index];
+            tab[index] = tab[i];
+            tab[i] = temp;
         }
-        return tab;  // Retourne le tableau mélangé
+        return tab;
     }
 
     /**

@@ -5,20 +5,20 @@ import fr.ecole3il.rodez2023.perlin.Utils;
 import java.awt.image.BufferedImage;
 
 public enum TypeTerrain {
-    OCEAN("ocean", "ocean.png"), PLAINE("plain", "plain.png"), FORET_FEUILLUS("deciduous_forest", "deciduous_forest.png"),
-    MONTAGNE("mountain", "mountain.png"), DESERT("desert", "desert.png"), COLLINES("hills", "hills.png"), MARAIS("marsh", "marsh.png"),
-    FORET_CONIFÈRES("coniferous_forest", "coniferous_forest.png"), TOUNDRA("toundra", "toundra.png");
+    OCEAN("ocean", "ocean.png"), PLAINE("plaine", "plain.png"), FORET_FEUILLUS("forêt de feuillus", "deciduous_forest.png"),
+    MONTAGNE("montagne", "mountain.png"), DESERT("desert", "desert.png"), COLLINES("Collines", "hills.png"), MARAIS("marais", "marsh.png"),
+    FORET_CONIFÈRES("foret conifiere", "coniferous_forest.png"), TOUNDRA("toundra", "toundra.png");
 
     private final String nomTerrain;
-    private final String path;
+    private final String nomFich;
 
-    TypeTerrain(String nomTerrain, String path) {
+    TypeTerrain(String nomTerrain, String nomFich) {
         this.nomTerrain = nomTerrain;
-        this.path = path;
+        this.nomFich = nomFich;
     }
 
     public BufferedImage getImage() {
-        return Utils.chargerTuile(path);
+        return Utils.chargerTuile(nomFich);
     }
 
 }

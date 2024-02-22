@@ -3,12 +3,10 @@ package fr.ecole3il.rodez2023.perlin.math;
 import java.util.Random;
 
 /**
- * La classe RandomNoise étend la classe Noise2D et génère du bruit aléatoire en deux dimensions.
+ * La classe BruitAleatoire étend la classe Bruit2D et génère du bruit aléatoire en deux dimensions.
  * Elle utilise la classe Random de Java pour générer des valeurs aléatoires.
  */
 public class BruitAleatoire extends Bruit2D {
-
-
     private  Random random;
     /**
      * Constructeur de la classe BruitAleatoire.

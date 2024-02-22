@@ -1,16 +1,12 @@
 package fr.ecole3il.rodez2023.perlin.terrain.carte;
 
 import fr.ecole3il.rodez2023.perlin.terrain.elements.Terrain;
-import fr.ecole3il.rodez2023.perlin.terrain.generation.GenerateurAleatoire;
-import fr.ecole3il.rodez2023.perlin.terrain.generation.GenerateurPerlin;
 import fr.ecole3il.rodez2023.perlin.terrain.generation.GenerateurCarte;
 import java.util.Scanner;
 public class Carte {
     private int largeur;
     private int hauteur;
-
     private String nom;
-
     private Terrain [][] tabTerrain;
 
     public Carte(String nom, int largeur, int hauteur, GenerateurCarte generateurCarte){
@@ -42,10 +38,6 @@ public class Carte {
                 scanner.close();
         }
 
-
-
-
-
     public int getLargeur() {
         return largeur;
     }
@@ -64,6 +56,4 @@ public class Carte {
         }
         return tabTerrain[x][y];
     }
-
-
 }

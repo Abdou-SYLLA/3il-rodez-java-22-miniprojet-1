@@ -14,7 +14,6 @@ import fr.ecole3il.rodez2023.perlin.terrain.elements.Terrain;
  * @author proussille
  */
 public class ManipulateurCarte {
-
     /**
      * Charge une carte à partir d'un fichier spécifié.
      * @param cheminFichier Le chemin vers le fichier contenant les données de la carte.

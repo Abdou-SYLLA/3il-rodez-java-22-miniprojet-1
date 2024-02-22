@@ -68,6 +68,10 @@ public class VisualiseurTerrain {
         return valeur >= 0.7;
     }
 
+    public boolean fond_marrin(double valeur){
+            return valeur < 0;
+    }
+
     public boolean estPlaine(double altitude, double hydrometrie, double temperature) {
         return basse(hydrometrie) && basse(altitude) && (basse(temperature) || moyenne(temperature) || haute(temperature));
     }
@@ -104,10 +108,6 @@ public class VisualiseurTerrain {
                 && (basse(temperature) || moyenne(temperature));
     }
 
-    public boolean estOcean(double altitude) {
-        return altitude < 0;
-    }
-
     public TypeTerrain getTypeTerrain(int x, int y) {
         double altitude = this.carte.getTerrain(x, y).getAltitude();
         double hydrometrie = this.carte.getTerrain(x, y).getHydrometrie();
@@ -133,10 +133,6 @@ public class VisualiseurTerrain {
             return TypeTerrain.OCEAN;
         }
 
-    }
-
-    public Carte getCarte() {
-        return carte;
     }
 
 

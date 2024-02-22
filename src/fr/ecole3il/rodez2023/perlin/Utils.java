@@ -16,7 +16,7 @@ import javax.imageio.ImageIO;
 public class Utils {
 
     /** Le répertoire de stockage des tuiles */
-    public static final String REPERTOIRE_TUILES = "data/tiles/";
+    public static final String REPERTOIRE_TUILES = "/Users/abdous/Desktop/inge1/java/miniProjet/3il-rodez-java-22-miniprojet-1/data/tiles/";
 
     /**
      * Charge une image à partir d'un fichier spécifié.
@@ -28,6 +28,7 @@ public class Utils {
             String imagePath = REPERTOIRE_TUILES + nomFichier;
 
             System.out.printf(" path : " + imagePath);
+            System.out.println(System.getProperty("user.dir"));
             File imagePa = new File(imagePath) ;
             if (!imagePa.exists()) {
                 System.out.println(" File does not exist: " + imagePa);

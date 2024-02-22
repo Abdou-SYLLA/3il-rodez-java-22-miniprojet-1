@@ -17,12 +17,8 @@ public enum TypeTerrain {
         this.path = path;
     }
 
-    public String getPath() {
-        return path;
-    }
-
     public BufferedImage getImage() {
-        return Utils.chargerTuile(getPath());
+        return Utils.chargerTuile(path);
     }
 
 }

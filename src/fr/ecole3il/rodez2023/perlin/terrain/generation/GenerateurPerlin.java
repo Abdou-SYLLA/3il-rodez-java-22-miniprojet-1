@@ -12,7 +12,7 @@ public class GenerateurPerlin extends GenerateurCarte {
     public GenerateurPerlin(long graine) {
         super(graine);
 
-
+        // Utilisez la graine pour initialiser les générateurs de bruit de Perlin
         bruitAltitude = new BruitPerlin2D(graine * 2, 1.0);
         bruitHydrometrie = new BruitPerlin2D(graine, 1.0);
         bruitTemperature = new BruitPerlin2D(graine * 2, 1.0);

@@ -8,12 +8,10 @@ public class Terrain {
     private double hydrometrie;
 
     public Terrain(double altitude, double temperature, double hydrometrie) {
-        temperature = Math.abs(temperature);
-        hydrometrie = Math.abs(hydrometrie);
-        if(temperature > 1 || temperature < 0)
+        if(Math.abs(temperature) > 1 )
             throw new MauvaiseValeurException("la valeur temperature entrée n'est pas correcte");
 
-        if(hydrometrie > 1 || hydrometrie < 0)
+        if(Math.abs(hydrometrie) > 1 )
             throw new MauvaiseValeurException("la valeur hydometrie entrée n'est pas correcte");
 
         if(altitude > 1 || altitude < -1)
@@ -21,8 +19,8 @@ public class Terrain {
 
 
         this.altitude = altitude;
-        this.temperature = temperature;
-        this.hydrometrie = hydrometrie;
+        this.temperature = Math.abs(temperature);
+        this.hydrometrie = Math.abs(hydrometrie);
     }
 
 

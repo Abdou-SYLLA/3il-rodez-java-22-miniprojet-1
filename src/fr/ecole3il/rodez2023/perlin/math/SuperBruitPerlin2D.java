@@ -1,15 +1,11 @@
 package fr.ecole3il.rodez2023.perlin.math;
 
-public class SuperBruitPerlin2D extends Bruit2D {
+public class SuperBruitPerlin2D extends BruitPerlin2D {
 
     public SuperBruitPerlin2D(long graine, double resolution) {
         super(graine, resolution);
     }
 
-    @Override
-    public double bruit2D(double x, double y) {
-        return 0;
-    }
 
     /**
      * Cette méthode multiplie la composante x du vecteur par la distance x, et la composante y par la distance y,

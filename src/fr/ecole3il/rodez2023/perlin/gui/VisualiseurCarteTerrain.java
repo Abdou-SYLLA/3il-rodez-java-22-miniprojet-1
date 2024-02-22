@@ -60,7 +60,6 @@ public class VisualiseurCarteTerrain extends JFrame {
             for (int x = 0; x < largeur; x++) {
                 TypeTerrain type = vte.getTypeTerrain(x, y);
                 BufferedImage image = type.getImage();
-				System.out.println("image :" + image);
                 g.drawImage(image, x * tuileWidth, y * tuileHeight, tuileWidth, tuileHeight, null);
             }
         }

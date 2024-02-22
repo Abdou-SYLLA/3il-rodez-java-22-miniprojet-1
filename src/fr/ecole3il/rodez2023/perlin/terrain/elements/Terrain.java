@@ -17,7 +17,6 @@ public class Terrain {
         if(altitude > 1 || altitude < -1)
             throw new MauvaiseValeurException("la valeur altitude entrée n'est pas correcte");
 
-
         this.altitude = altitude;
         this.temperature = Math.abs(temperature);
         this.hydrometrie = Math.abs(hydrometrie);
@@ -26,27 +25,6 @@ public class Terrain {
 
     public double getAltitude() {
         return this.altitude;
-    }
-
-    public void setAltitude(double altitude) {
-        if(altitude > 1 || altitude < -1)
-            throw new MauvaiseValeurException("la valeur altitude entrée n'est pas correcte");
-        else
-            this.altitude = altitude;
-    }
-
-    public void setTemperature(double temperature) {
-        if(altitude > 1 || altitude < 0)
-            throw new MauvaiseValeurException("la valeur altitude entrée n'est pas correcte");
-        else
-            this.temperature = temperature;
-    }
-
-    public void setHydrometrie(double hydrometrie) {
-        if(altitude > 1 || altitude < 0)
-            throw new MauvaiseValeurException("la valeur altitude entrée n'est pas correcte");
-        else
-            this.hydrometrie = hydrometrie;
     }
 
     TypeTerrain getTypeTerrain(DetermineurTerrain dt){

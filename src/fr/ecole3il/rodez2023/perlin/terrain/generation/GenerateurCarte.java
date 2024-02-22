@@ -8,9 +8,7 @@ import fr.ecole3il.rodez2023.perlin.terrain.elements.Terrain;
  * @author proussille
  */
 public abstract class GenerateurCarte {
-
     private final long graine;
-
     /**
      * Constructeur du générateur de carte.
      *

@@ -1,0 +1,31 @@
+- ce que vous avez réalisé du projet ;
+
+
+- les réponses aux diverses questions du sujet s'il y en a ;
+1)
+    Cf figure diagramme 1.
+    Quelle serait la différence d'attributs et de méthodes entre ces classes ?
+    Reponse:
+        La classe Collines a un attribut spécifique, Pente, qui représente l'inclinaison des collines. Sa méthode supplémentaire, getPente(), permet d'obtenir cette information.
+
+        La classe Déserts a un attribut spécifique, Température, et une méthode supplémentaire, getTemperature(), pour récupérer la température du désert.
+
+        La classe Forêts a un attribut spécifique, TypeArbres, et une méthode supplémentaire, getTypeArbres(), pour obtenir le type d'arbres dans la forêt.
+
+        Chaque classe fille a ses propres attributs et méthodes qui reflètent les propriétés uniques de chaque type de terrain, en plus des attributs et méthodes hérités de la classe mère Terrain.
+        Cela permet d'étendre les fonctionnalités de la classe mère de manière spécifique à chaque type de terrain.
+
+     Expliquer, en s'appuyant sur un exercice vu en cours, pourquoi c'est une mauvaise idée. Quelle est la solution qu'il faudrait préférer (et que l'on va préférer) ?
+
+Question : quel type utilisez-vous ?
+Reponse : type Double
+
+
+
+
+
+
+
+
+- un retour personnel sur les points qui vous ont paru difficiles ;
+- tout autre commentaire que vous jugerez utile...

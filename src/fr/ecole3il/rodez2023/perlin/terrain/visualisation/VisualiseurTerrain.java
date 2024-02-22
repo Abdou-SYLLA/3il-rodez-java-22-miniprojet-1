@@ -60,13 +60,15 @@ public class VisualiseurTerrain {
      * @return Représentation textuelle de l'altitude.
      */
     public String altitudeAffichee(double valeur) {
+        String res;
         if (valeur < 0.33) {
-            return "Basse";
+            res =  "Basse";
         } else if (valeur < 0.66) {
-            return "Moyenne";
+            res =  "Moyenne";
         } else {
-            return "Élevée";
+            res =  "Élevée";
         }
+        return res;
     }
 
     /**
@@ -76,13 +78,15 @@ public class VisualiseurTerrain {
      * @return Représentation textuelle de l'hydrométrie.
      */
     public String hydrometrieAffichee(double valeur) {
+        String res;
         if (valeur < 0.33) {
-            return "Sec";
+            res =  "Sec";
         } else if (valeur < 0.66) {
-            return "Moyen";
+            res= "Moyen";
         } else {
-            return "Humide";
+            res= "Humide";
         }
+        return res;
     }
 
     /**
@@ -92,13 +96,15 @@ public class VisualiseurTerrain {
      * @return Représentation textuelle de la température.
      */
     public String temperatureAffichee(double valeur) {
+        String res;
         if (valeur < 0.33) {
-            return "Froide";
+            res =  "Froide";
         } else if (valeur < 0.66) {
-            return "Tempérée";
+            res =  "Tempérée";
         } else {
-            return "Chaud";
+            res =  "Chaud";
         }
+        return res;
     }
 
     // Méthodes pour évaluer les caractéristiques du terrain
@@ -189,27 +195,27 @@ public class VisualiseurTerrain {
         double altitude = this.carte.getTerrain(x, y).getAltitude();
         double hydrometrie = this.carte.getTerrain(x, y).getHydrometrie();
         double temperature = this.carte.getTerrain(x, y).getTemperature();
-
+        TypeTerrain type;
         if (estPlaine(altitude, hydrometrie, temperature)) {
-            return TypeTerrain.PLAINE;
+            type =  TypeTerrain.PLAINE;
         } else if (estForetFeuillus(altitude, hydrometrie, temperature)) {
-            return TypeTerrain.FORET_FEUILLUS;
+            type =  TypeTerrain.FORET_FEUILLUS;
         } else if (estToundra(altitude, hydrometrie, temperature)) {
-            return TypeTerrain.TOUNDRA;
+            type =  TypeTerrain.TOUNDRA;
         } else if (estForetConiferes(altitude, hydrometrie, temperature)) {
-            return TypeTerrain.FORET_CONIFÈRES;
+            type =  TypeTerrain.FORET_CONIFÈRES;
         } else if (estMontagne(altitude, hydrometrie, temperature)) {
-            return TypeTerrain.MONTAGNE;
+            type =  TypeTerrain.MONTAGNE;
         } else if (estDesert(altitude, hydrometrie, temperature)) {
-            return TypeTerrain.DESERT;
+            type =  TypeTerrain.DESERT;
         } else if (estCollines(altitude, hydrometrie, temperature)) {
-            return TypeTerrain.COLLINES;
+            type =  TypeTerrain.COLLINES;
         } else if (estMarais(altitude, hydrometrie, temperature)) {
-            return TypeTerrain.MARAIS;
+            type =  TypeTerrain.MARAIS;
         } else {
-            return TypeTerrain.OCEAN;
+            type = TypeTerrain.OCEAN;
         }
-
+        return type;
     }
 
 

@@ -8,34 +8,73 @@ public class VisualiseurTerrain {
         private Carte carte;
         private DetermineurTerrain determineurTerrain;
 
-        public VisualiseurTerrain( DetermineurTerrain determineurTerrain,Carte carte) {
-            this.carte = carte;
-            this.determineurTerrain = determineurTerrain;
-        }
+    /**
+     * Constructeur de la classe `VisualiseurTerrain`.
+     *
+     * @param determineurTerrain Le détermineur de terrain utilisé pour déterminer le type de terrain.
+     * @param carte              La carte à visualiser.
+     */
+    public VisualiseurTerrain(DetermineurTerrain determineurTerrain, Carte carte) {
+        this.carte = carte;
+        this.determineurTerrain = determineurTerrain;
+    }
 
+    // Méthodes pour obtenir des informations affichées sur l'altitude, l'hydrométrie et la température
 
+    /**
+     * Obtient l'altitude affichée à une position spécifique sur la carte.
+     *
+     * @param x Coordonnée x.
+     * @param y Coordonnée y.
+     * @return L'altitude affichée.
+     */
     public String getAltitudeAffichee(int x, int y) {
-        return altitudeAffichee(carte.getTerrain(x,y).getAltitude()) ;
+        return altitudeAffichee(carte.getTerrain(x, y).getAltitude());
     }
 
+    /**
+     * Obtient l'hydrométrie affichée à une position spécifique sur la carte.
+     *
+     * @param x Coordonnée x.
+     * @param y Coordonnée y.
+     * @return L'hydrométrie affichée.
+     */
     public String getHydrometrieAffichee(int x, int y) {
-        return hydrometrieAffichee(carte.getTerrain(x,y).getHydrometrie());
+        return hydrometrieAffichee(carte.getTerrain(x, y).getHydrometrie());
     }
 
+    /**
+     * Obtient la température affichée à une position spécifique sur la carte.
+     *
+     * @param x Coordonnée x.
+     * @param y Coordonnée y.
+     * @return La température affichée.
+     */
     public String getTemperatureAffichee(int x, int y) {
-        return temperatureAffichee(carte.getTerrain(x,y).getTemperature());
+        return temperatureAffichee(carte.getTerrain(x, y).getTemperature());
     }
-
+    /**
+     * Obtient une représentation textuelle de l'altitude en fonction de sa valeur.
+     *
+     * @param valeur La valeur de l'altitude.
+     * @return Représentation textuelle de l'altitude.
+     */
     public String altitudeAffichee(double valeur) {
         if (valeur < 0.33) {
             return "Basse";
         } else if (valeur < 0.66) {
             return "Moyenne";
         } else {
-            return "Elevee";
+            return "Élevée";
         }
     }
 
+    /**
+     * Obtient une représentation textuelle de l'hydrométrie en fonction de sa valeur.
+     *
+     * @param valeur La valeur de l'hydrométrie.
+     * @return Représentation textuelle de l'hydrométrie.
+     */
     public String hydrometrieAffichee(double valeur) {
         if (valeur < 0.33) {
             return "Sec";
@@ -46,32 +85,63 @@ public class VisualiseurTerrain {
         }
     }
 
+    /**
+     * Obtient une représentation textuelle de la température en fonction de sa valeur.
+     *
+     * @param valeur La valeur de la température.
+     * @return Représentation textuelle de la température.
+     */
     public String temperatureAffichee(double valeur) {
         if (valeur < 0.33) {
-            return "Froid";
+            return "Froide";
         } else if (valeur < 0.66) {
-            return "Tempere";
+            return "Tempérée";
         } else {
             return "Chaud";
         }
     }
 
+    // Méthodes pour évaluer les caractéristiques du terrain
+
+    /**
+     * Vérifie si la valeur est basse.
+     *
+     * @param valeur La valeur à évaluer.
+     * @return True si la valeur est basse, sinon False.
+     */
     public boolean basse(double valeur) {
         return valeur < 0.3;
     }
 
+    /**
+     * Vérifie si la valeur est moyenne.
+     *
+     * @param valeur La valeur à évaluer.
+     * @return True si la valeur est moyenne, sinon False.
+     */
     public boolean moyenne(double valeur) {
         return valeur >= 0.3 && valeur < 0.7;
     }
 
+    /**
+     * Vérifie si la valeur est haute.
+     *
+     * @param valeur La valeur à évaluer.
+     * @return True si la valeur est haute, sinon False.
+     */
     public boolean haute(double valeur) {
         return valeur >= 0.7;
     }
 
-    public boolean fond_marrin(double valeur){
-            return valeur < 0;
+    /**
+     * Vérifie si la valeur est dans la plage des fonds marins.
+     *
+     * @param valeur La valeur à évaluer.
+     * @return True si la valeur est inférieure à zéro, sinon False.
+     */
+    public boolean fond_marrin(double valeur) {
+        return valeur < 0;
     }
-
     public boolean estPlaine(double altitude, double hydrometrie, double temperature) {
         return basse(hydrometrie) && basse(altitude) && (basse(temperature) || moyenne(temperature) || haute(temperature));
     }
@@ -108,6 +178,13 @@ public class VisualiseurTerrain {
                 && (basse(temperature) || moyenne(temperature));
     }
 
+    /**
+     * Obtient le type de terrain à une position spécifique sur la carte en utilisant les méthodes d'évaluation du terrain.
+     *
+     * @param x Coordonnée x.
+     * @param y Coordonnée y.
+     * @return Le type de terrain à la position spécifiée.
+     */
     public TypeTerrain getTypeTerrain(int x, int y) {
         double altitude = this.carte.getTerrain(x, y).getAltitude();
         double hydrometrie = this.carte.getTerrain(x, y).getHydrometrie();

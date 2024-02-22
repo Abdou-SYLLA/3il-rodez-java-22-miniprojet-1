@@ -12,6 +12,7 @@ import java.util.Random;
  */
 public class GenerateurAleatoire extends GenerateurCarte {
     private Random random;
+
     /**
      * Constructeur du générateur de carte aléatoire avec une graine spécifique.
      *
@@ -19,7 +20,7 @@ public class GenerateurAleatoire extends GenerateurCarte {
      */
     public GenerateurAleatoire(long graine) {
         super(graine);
-         this.random = new Random();
+        this.random = new Random();
     }
 
     /**
@@ -35,7 +36,7 @@ public class GenerateurAleatoire extends GenerateurCarte {
     protected Terrain genererTerrain(int i, int j, int largeur, int hauteur) {
         double altitude = this.random.nextDouble(-1.0, 1.0);
         double hydrometrie = this.random.nextDouble(0.0, 1.0);
-        double temperature =this.random.nextDouble(0.0, 1.0);
+        double temperature = this.random.nextDouble(0.0, 1.0);
         try {
             return new Terrain(altitude, hydrometrie, temperature);
         } catch (Exception e) {

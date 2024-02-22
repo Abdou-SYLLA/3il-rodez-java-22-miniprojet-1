@@ -13,9 +13,6 @@ public class VisualiseurTerrain {
             this.determineurTerrain = determineurTerrain;
         }
 
-    public TypeTerrain getTypeTerrain(int x, int y) {
-        return determineurTerrain.determinerTerrain(carte.getTerrain(x,y).getAltitude(),carte.getTerrain(x,y).getHydrometrie(),carte.getTerrain(x,y).getTemperature());
-    }
 
     public String getAltitudeAffichee(int x, int y) {
         return altitudeAffichee(carte.getTerrain(x,y).getAltitude()) ;
@@ -59,9 +56,90 @@ public class VisualiseurTerrain {
         }
     }
 
+    public boolean basse(double valeur) {
+        return valeur < 0.3;
+    }
+
+    public boolean moyenne(double valeur) {
+        return valeur >= 0.3 && valeur < 0.7;
+    }
+
+    public boolean haute(double valeur) {
+        return valeur >= 0.7;
+    }
+
+    public boolean estPlaine(double altitude, double hydrometrie, double temperature) {
+        return basse(hydrometrie) && basse(altitude) && (basse(temperature) || moyenne(temperature) || haute(temperature));
+    }
+
+    public boolean estForetFeuillus(double altitude, double hydrometrie, double temperature) {
+        return basse(hydrometrie) && (basse(altitude) || moyenne(altitude)) && (moyenne(temperature) || haute(temperature));
+    }
+
+    public boolean estToundra(double altitude, double hydrometrie, double temperature) {
+        return basse(hydrometrie) && basse(altitude) && haute(temperature);
+    }
+
+    public boolean estForetConiferes(double altitude, double hydrometrie, double temperature) {
+        return basse(hydrometrie) || haute(hydrometrie) && basse(altitude) && moyenne(temperature);
+    }
+
+    public boolean estMontagne(double altitude, double hydrometrie, double temperature) {
+        return (basse(hydrometrie) || moyenne(hydrometrie) || haute(hydrometrie)) && haute(altitude)
+                && (basse(temperature) || moyenne(temperature) || haute(temperature));
+    }
+
+    public boolean estDesert(double altitude, double hydrometrie, double temperature) {
+        return basse(hydrometrie) && haute(altitude) && basse(temperature);
+    }
+
+    public boolean estCollines(double altitude, double hydrometrie, double temperature) {
+        return (basse(hydrometrie) || moyenne(hydrometrie) || haute(hydrometrie))
+                && (moyenne(altitude) || haute(altitude))
+                && (basse(temperature) || moyenne(temperature) || haute(temperature));
+    }
+
+    public boolean estMarais(double altitude, double hydrometrie, double temperature) {
+        return (moyenne(hydrometrie) || haute(hydrometrie)) && basse(altitude)
+                && (basse(temperature) || moyenne(temperature));
+    }
+
+    public boolean estOcean(double altitude) {
+        return altitude < 0;
+    }
+
+    public TypeTerrain getTypeTerrain(int x, int y) {
+        double altitude = this.carte.getTerrain(x, y).getAltitude();
+        double hydrometrie = this.carte.getTerrain(x, y).getHydrometrie();
+        double temperature = this.carte.getTerrain(x, y).getTemperature();
+
+        if (estPlaine(altitude, hydrometrie, temperature)) {
+            return TypeTerrain.PLAINE;
+        } else if (estForetFeuillus(altitude, hydrometrie, temperature)) {
+            return TypeTerrain.FORET_FEUILLUS;
+        } else if (estToundra(altitude, hydrometrie, temperature)) {
+            return TypeTerrain.TOUNDRA;
+        } else if (estForetConiferes(altitude, hydrometrie, temperature)) {
+            return TypeTerrain.FORET_CONIFÈRES;
+        } else if (estMontagne(altitude, hydrometrie, temperature)) {
+            return TypeTerrain.MONTAGNE;
+        } else if (estDesert(altitude, hydrometrie, temperature)) {
+            return TypeTerrain.DESERT;
+        } else if (estCollines(altitude, hydrometrie, temperature)) {
+            return TypeTerrain.COLLINES;
+        } else if (estMarais(altitude, hydrometrie, temperature)) {
+            return TypeTerrain.MARAIS;
+        } else {
+            return TypeTerrain.OCEAN;
+        }
+
+    }
+
     public Carte getCarte() {
         return carte;
     }
+
+
 }
 
 
